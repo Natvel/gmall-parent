@@ -17,6 +17,7 @@ import com.hz.gmall.vo.PmsProductParam;
 import com.hz.gmall.vo.PmsProductQueryParam;
 import io.searchbox.client.JestClient;
 import io.searchbox.core.*;
+import java.security.SecureRandom;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.lucene.search.join.ScoreMode;
 import org.elasticsearch.index.query.QueryBuilders;
@@ -179,7 +180,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper,Product> imple
 			skuStock.setProductId(product.getId());
 			if(skuStock.getSkuCode() == null){
 				//skuCode是空的
-				skuStock.setSkuCode(String.valueOf(new Random().nextInt(100) + 1
+				skuStock.setSkuCode(String.valueOf(new SecureRandom().nextInt(100) + 1
 				));
 			}
 			skuStockMapper.insert(skuStock);
